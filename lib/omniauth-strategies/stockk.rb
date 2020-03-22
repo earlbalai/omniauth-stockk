@@ -8,7 +8,7 @@ module OmniAuth
 
       option :client_options, {
         :site => "http://localhost:3001",
-        :authorize_url => "/oauth/authorize"
+        #:authorize_url => "/oauth/authorize"
       }
 
       uid { raw_info["id"] }
