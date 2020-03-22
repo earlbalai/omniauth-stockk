@@ -1,32 +1,23 @@
 require 'omniauth-oauth2'
-
 module OmniAuth
   module Strategies
     class Stockk < OmniAuth::Strategies::OAuth2
-      # change the class name and the :name option to match your application name
-      option :name, :stockk
-
+      include OmniAuth::Strategy
       option :client_options, {
-        :site => "http://localhost:3001",
-        #:authorize_url => "/oauth/authorize"
-      }
-
-      uid { raw_info["id"] }
-
+               site: "http://localhost:3001",
+               authorize_url: "/oauth/authorize",
+               token_url: "/oauth/token"
+             }
+      def request_phase
+        super
+      end
       info do
-        {
-          :email => raw_info["email"]
-          # and anything else you want to return to your API consumers
-        }
+        raw_info.merge("token" => access_token.token)
       end
-
+      uid { raw_info["id"] }
       def raw_info
-        @raw_info ||= access_token.get('/api/v1/me.json').parsed
-      end
-
-      # https://github.com/intridea/omniauth-oauth2/issues/81
-      def callback_url
-        full_host + script_name + callback_path
+        @raw_info ||= 
+          access_token.get('/api/users/me').parsed
       end
     end
   end
