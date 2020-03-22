@@ -2,9 +2,9 @@ require 'omniauth-oauth2'
 
 module OmniAuth
   module Strategies
-    class Doorkeeper < OmniAuth::Strategies::OAuth2
+    class Stockk < OmniAuth::Strategies::OAuth2
       # change the class name and the :name option to match your application name
-      option :name, :doorkeeper
+      option :name, :stockk
 
       option :client_options, {
         :site => ENV['SITE_URL'],
