@@ -7,8 +7,8 @@ module OmniAuth
       option :name, :stockk
 
       option :client_options, {
-        :site => ENV['SITE_URL'],
-        #:authorize_url => "/auth/authorize"
+        :site => "http://localhost:3001",
+        :authorize_url => "/auth/authorize"
       }
 
       uid { raw_info["id"] }
