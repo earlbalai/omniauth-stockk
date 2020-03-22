@@ -14,7 +14,7 @@ module OmniAuth
       info do
         raw_info.merge("token" => access_token.token)
       end
-      uid { raw_info["id"] }
+      uid { raw_info["public_uid"] }
       def raw_info
         @raw_info ||= 
           access_token.get('/api/v1/user').parsed
