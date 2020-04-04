@@ -4,7 +4,7 @@ module OmniAuth
     class Stockk < OmniAuth::Strategies::OAuth2
       include OmniAuth::Strategy
       option :client_options, {
-               site: "http://localhost:3001",
+               site: "https://id.instockk.com",
                authorize_url: "/oauth/authorize",
                token_url: "/oauth/token"
              }
