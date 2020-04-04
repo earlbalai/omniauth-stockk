@@ -2,6 +2,6 @@
 
 module Omniauth
   module Stockk
-    VERSION = '0.1.9.3'
+    VERSION = '1.0.0'
   end
 end
